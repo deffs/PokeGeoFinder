@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>535169048183-ciobggr2vq5i3a6plj7r3d2tb4rvnibi.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.535169048183-ciobggr2vq5i3a6plj7r3d2tb4rvnibi</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAEdIdfTJslquOBLegzhuBWbrQmlBGvNc8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>535169048183</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>swifty.defrance.PokeGeoFire</string>
+	<key>PROJECT_ID</key>
+	<string>pokegeofire</string>
+	<key>STORAGE_BUCKET</key>
+	<string>pokegeofire.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:535169048183:ios:0f404d32a3220b58</string>
+	<key>DATABASE_URL</key>
+	<string>https://pokegeofire.firebaseio.com</string>
+</dict>
+</plist>
