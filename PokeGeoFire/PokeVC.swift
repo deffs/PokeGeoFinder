@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import FirebaseDatabase
 
 class PokeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
@@ -16,12 +17,15 @@ class PokeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     let locManager = CLLocationManager()
     var mapHasCentered = false
     var geoFire: GeoFire!
+    var geoFireRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mapView.delegate = self
         mapView.userTrackingMode = .follow
+        geoFireRef = Database.database().reference()
+        geoFire = GeoFire(firebaseRef: geoFireRef)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,7 +71,24 @@ class PokeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
         return annotView
     }
     
+    func createSighting(forLocation location: CLLocation, withPokemon pokeId: Int) {
+        geoFire.setLocation(location, forKey: "\(pokeId)")
+        
+    }
+    
+    func showSightingsOnMap(location: CLLocation) {
+        let circleQ = geoFire!.query(at: location, withRadius: 2.5)
+        _ = circleQ.observe(GFEventType.keyEntered, with: {
+            (key, location) in
+                let anno = PokeAnnot(coordinate: location.coordinate, pokeNumber: Int(key)!)
+                self.mapView.addAnnotation(anno)
+        })
+    }
+    
     @IBAction func spotPoke(_ sender: Any) {
+        let loc  = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        let rand = arc4random_uniform(151) + 1
+        createSighting(forLocation: loc, withPokemon: Int(rand))
     }
     
 }

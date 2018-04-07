@@ -19,6 +19,7 @@
 		CAF33B632079788000CC54DD /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF33B592079788000CC54DD /* GFQuery.m */; };
 		CAF33B642079788000CC54DD /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF33B5A2079788000CC54DD /* GFGeoHash.m */; };
 		CAF33B6A2079809300CC54DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAF33B692079809200CC54DD /* GoogleService-Info.plist */; };
+		CAF33B6C207983C500CC54DD /* PokeAnnot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF33B6B207983C500CC54DD /* PokeAnnot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		CAF33B5F2079788000CC54DD /* GFCircleQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCircleQuery.h; sourceTree = "<group>"; };
 		CAF33B682079791400CC54DD /* PokeFind-BH.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PokeFind-BH.h"; path = "/Users/alexd/Desktop/PokeGeoFire/PokeGeoFire/PokeFind-BH.h"; sourceTree = "<absolute>"; };
 		CAF33B692079809200CC54DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CAF33B6B207983C500CC54DD /* PokeAnnot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeAnnot.swift; sourceTree = "<group>"; };
 		E07DD25F44AB51416AADD603 /* Pods_PokeGeoFire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeGeoFire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9F552EE892C2471D89D18B9 /* Pods-PokeGeoFire.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeGeoFire.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PokeGeoFire/Pods-PokeGeoFire.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 				CAF33B4E2079788000CC54DD /* GeoFire */,
 				CAF33B3C2079778000CC54DD /* AppDelegate.swift */,
 				CAF33B3E2079778000CC54DD /* PokeVC.swift */,
+				CAF33B6B207983C500CC54DD /* PokeAnnot.swift */,
 				CAF33B402079778000CC54DD /* Main.storyboard */,
 				CAF33B432079778100CC54DD /* Assets.xcassets */,
 				CAF33B452079778100CC54DD /* LaunchScreen.storyboard */,
@@ -286,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF33B3F2079778000CC54DD /* PokeVC.swift in Sources */,
+				CAF33B6C207983C500CC54DD /* PokeAnnot.swift in Sources */,
 				CAF33B612079788000CC54DD /* GeoFire.m in Sources */,
 				CAF33B3D2079778000CC54DD /* AppDelegate.swift in Sources */,
 				CAF33B632079788000CC54DD /* GFQuery.m in Sources */,
