@@ -63,11 +63,29 @@ class PokeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotView: MKAnnotationView?
+        let annoId = "Pokemon"
         
         if annotation.isKind(of: MKUserLocation.self) {
             annotView = MKAnnotationView(annotation: annotation, reuseIdentifier: "User")
             annotView?.image = #imageLiteral(resourceName: "ash")
+        } else if let deqAnno = mapView.dequeueReusableAnnotationView(withIdentifier: annoId) {
+            annotView = deqAnno
+            annotView?.annotation = annotation
+        } else {
+            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annoId)
+            av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            annotView = av
         }
+        
+        if let annotationView = annotView, let anno = annotation as? PokeAnnot {
+            annotationView.canShowCallout = true
+            annotationView.image = UIImage(named: "\(anno.pokeNumber)")
+            let btn = UIButton()
+            btn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            btn.setImage(#imageLiteral(resourceName: "location-map-flat"), for: .normal)
+            annotationView.rightCalloutAccessoryView = btn
+        }
+        
         return annotView
     }
     
@@ -83,6 +101,24 @@ class PokeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
                 let anno = PokeAnnot(coordinate: location.coordinate, pokeNumber: Int(key)!)
                 self.mapView.addAnnotation(anno)
         })
+    }
+    
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        showSightingsOnMap(location: loc)
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if let  anno = view.annotation as? PokeAnnot {
+            let place = MKPlacemark(coordinate: anno.coordinate)
+            let destination = MKMapItem(placemark: place)
+            destination.name = "Pokemon Sighting"
+            let regionDistance: CLLocationDistance = 1000
+            let regionSpan = MKCoordinateRegionMakeWithDistance(anno.coordinate, regionDistance, regionDistance)
+            let options = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center), MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span), MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving] as [String : Any]
+            
+            MKMapItem.openMaps(with: [destination], launchOptions: options)
+        }
     }
     
     @IBAction func spotPoke(_ sender: Any) {
